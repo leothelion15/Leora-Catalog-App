@@ -1,0 +1,27 @@
+<html>
+
+<body>
+
+  <h1>Catalog App</h1>
+
+  <a href = '#'>Create New Catagory</a>
+
+  <div class = categoryTopic>
+
+  {% for c in catalog %}
+
+  <h3>{{c.name}}</h3>
+
+  {% endfor %}
+
+  </div>
+
+<div class = latestItems>
+  <h2>Latest Items</h2>
+  {% for i in items %}
+    <p>{{i.name}}</p>
+  {% endfor %}
+  </div>
+
+</body>
+</html>

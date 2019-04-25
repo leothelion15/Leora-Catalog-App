@@ -20,7 +20,9 @@ session = DBSession()
 @app.route('/')
 @app.route('/catalog')
 def catalogHome():
-    return "This page will display all categories and latest items"
+    catalog = session.query(Category).all()
+    items = session.query(CatalogItem).order_by(CatalogItem.id.desc()).limit(5)
+    return render_template('catalogHome.html', catalog = catalog, items = items)
 
 @app.route('/catalog/<category_name>/items/')
 def categoryItems(category_name):
