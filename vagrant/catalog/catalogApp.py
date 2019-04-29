@@ -18,7 +18,7 @@ session = DBSession()
 
 # Show all current categories and latest Items
 @app.route('/')
-@app.route('/catalog')
+@app.route('/catalog/')
 def catalogHome():
     catalog = session.query(Category).all()
     items = session.query(CatalogItem).order_by(CatalogItem.id.desc()).limit(5)
@@ -26,11 +26,17 @@ def catalogHome():
 
 @app.route('/catalog/<category_name>/items/')
 def categoryItems(category_name):
-    return "This page will show  all the items in a category."
+    catalog = session.query(Category).filter_by(name = category_name).one()
+    items = session.query(CatalogItem).filter_by(category_id = catalog.id)
+    #return "This page will show  all the items in a category."
+    return render_template('categoryItems.html', catalog = catalog, items = items)
 
 @app.route('/catalog/<category_name>/items/<item_name>/')
 def itemInfo(category_name, item_name):
-    return "This page will display information about the item."
+    #catalog = session.query(Category).filter_by(name = category_name).one()
+    item = session.query(CatalogItem).filter_by(title = item_name).one()
+    return render_template('categoryItems.html', item = item)    
+    #return "This page will display information about the item."
 
 @app.route('/catalog/new')
 def newItem():
