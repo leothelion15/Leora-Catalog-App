@@ -4,13 +4,13 @@
 
   <h1>Catalog App</h1>
 
-  <a href = '#'>Create New Catagory</a>
+  <a href = '{{url_for('newItem')}}'>Add New Item</a>
 
   <div class = categoryTopic>
 
   {% for c in catalog %}
 
-  <a href = '#'><h3>{{c.name}}</h3></a>
+  <a href = '{{url_for('categoryItems', category_name = c.name)}}'><h3>{{c.name}}</h3></a>
 
   {% endfor %}
 

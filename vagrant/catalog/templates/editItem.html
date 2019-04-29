@@ -1,0 +1,20 @@
+<html>
+<body>
+
+<h1>Edit Catalog Item</h1>
+
+<form action = "{{url_for('editItem', category_name = category_name, catalog_id = item.id)}}"
+      method = 'POST'>
+
+<p>Name:</p>
+
+<input type = 'text' size = '30' name = 'name' placeholder="{{item.name}}">
+
+<input type = 'submit' value = 'Edit'>
+
+</form>
+
+<a href = {{url_for('categoryItems', category_name = category_name)}}>Cancel</a>
+
+</body>
+</html>

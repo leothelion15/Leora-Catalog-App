@@ -1,0 +1,37 @@
+<html>
+<body>
+
+<h1>New Catalog Item</h1>
+
+<form action = "{{url_for('newItem')}}"
+      method = 'POST'>
+
+<p>Title:</p>
+<input type = 'text' size = '30' name = 'title'>
+
+<p>Description:</p>
+<input type = 'text' size = '30' name = 'description'>
+
+<p>Category:</p>
+<select name = 'category'>
+  <option value = '1'>Soccer</option>
+  <option value = '2'>Basketball</option>
+  <option value = '3'>Baseball</option>
+</select>
+
+<!--
+<p>Category:</p>
+<input type = 'text' size = '30' name = 'category'>
+-->
+
+</br></br>
+
+<input type = 'submit' value = 'Create'>
+
+</form>
+
+<a href = "{{url_for('catalogHome')}}">
+  Cancel</a>
+
+</body>
+</html>

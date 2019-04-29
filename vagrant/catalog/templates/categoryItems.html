@@ -4,14 +4,12 @@
 
 <h1>{{catalog.name}} Items</h1>
 
-<a href = "#">
-    Create New Menu Item</a>
-
 {% for i in items %}
 
 <div>
-
+{{i.id}}
 <a href = "#"><h3>{{i.title}}</h3></a>
+</br>
 <a href = "#">Edit</a></br>
 <a href = "#">Delete</a></br>
 
