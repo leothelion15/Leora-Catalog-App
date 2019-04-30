@@ -1,16 +1,25 @@
 <html>
 <body>
 
-<h1>Edit Catalog Item</h1>
+<h1>Edit {{item.title}}</h1>
 
-<form action = "{{url_for('editItem', category_name = category_name, catalog_id = item.id)}}"
+<form action = "{{url_for('editItem', category_name = category_name, item_name = item.title)}}"
       method = 'POST'>
 
-<p>Name:</p>
+      <p>Title:</p>
+      <input type = 'text' size = '30' name = 'title' placeholder="{{item.title}}">
 
-<input type = 'text' size = '30' name = 'name' placeholder="{{item.name}}">
+      <p>Description:</p>
+      <input type = 'text' size = '30' name = 'description' placeholder="{{item.description}}">
 
-<input type = 'submit' value = 'Edit'>
+      <p>Category:</p>
+      <select name = 'category' placeholder="{{item.category}}">
+        <option value = '1'>Soccer</option>
+        <option value = '2'>Basketball</option>
+        <option value = '3'>Baseball</option>
+      </select>
+
+      <input type = 'submit' value = 'Edit'>
 
 </form>
 
