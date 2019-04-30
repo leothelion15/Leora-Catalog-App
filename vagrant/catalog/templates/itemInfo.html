@@ -7,11 +7,8 @@
 <div>
 
   <h3>{{item.description}}</h3>
-  {{item.category}}</br>
-  {{item.id}}</br>
-  {{item.category_id}}</br>
-  <a href = "#">Edit</a></br>
-  <a href = "#">Delete</a></br>
+  <a href = '{{url_for('editItem', category_name = category_name, item_name = item_name)}}'>Edit</a></br>
+  <a href = '{{url_for('deleteItem', category_name = category_name, item_name = item_name)}}'>Delete</a></br>
 
 </div>
 

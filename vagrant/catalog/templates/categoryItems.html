@@ -7,10 +7,10 @@
 {% for i in items %}
 
 <div>
-<a href = "#"><h3>{{i.title}}</h3></a>
+<a href = '{{url_for('itemInfo', category_name = catalog.name, item_name = i.title)}}'><h3>{{i.title}}</h3></a>
 </br>
-<a href = "#">Edit</a></br>
-<a href = "#">Delete</a></br>
+<a href = '{{url_for('editItem', category_name = catalog.name, item_name = i.title)}}'>Edit</a></br>
+<a href = '{{url_for('deleteItem', category_name = catalog.name, item_name = i.title)}}'>Delete</a></br>
 
 </br>
 </div>

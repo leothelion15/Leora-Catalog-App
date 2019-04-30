@@ -34,9 +34,8 @@ def categoryItems(category_name):
 #This page will display information about the item.
 @app.route('/catalog/<category_name>/items/<item_name>/')
 def itemInfo(category_name, item_name):
-    #catalog = session.query(Category).filter_by(name = category_name).one()
     item = session.query(CatalogItem).filter_by(title = item_name).one()
-    return render_template('itemInfo.html', item = item)
+    return render_template('itemInfo.html', item = item, category_name = category_name, item_name = item_name)
 
 #This page will allow signed in user to add a new item
 @app.route('/catalog/new', methods=['GET', 'POST'])
