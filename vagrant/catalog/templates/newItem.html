@@ -14,9 +14,9 @@
 
 <p>Category:</p>
 <select name = 'category'>
-  <option value = '1'>Soccer</option>
-  <option value = '2'>Basketball</option>
-  <option value = '3'>Baseball</option>
+  {% for c in category %}
+  <option value = '{{c.id}}'>{{c.name}}</option>
+  {% endfor %}
 </select>
 
 </br></br>

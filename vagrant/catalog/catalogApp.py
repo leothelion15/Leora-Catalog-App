@@ -27,19 +27,23 @@ def catalogHome():
 #The page will show  all the items in a category.
 @app.route('/catalog/<category_name>/items/')
 def categoryItems(category_name):
-    catalog = session.query(Category).filter_by(name = category_name).one()
-    items = session.query(CatalogItem).filter_by(category_id = catalog.id)
-    return render_template('categoryItems.html', catalog = catalog, items = items)
+    catalog = session.query(Category).all()
+    category = session.query(Category).filter_by(name = category_name).one()
+    items = session.query(CatalogItem).filter_by(category_id = category.id).all()
+    return render_template('categoryItems.html', catalog = catalog, category = category, items = items)
 
 #This page will display information about the item.
 @app.route('/catalog/<category_name>/items/<item_name>/')
 def itemInfo(category_name, item_name):
+    category = session.query(Category).filter_by(name = category_name).one()
+    categoryItems = session.query(CatalogItem).filter_by(category_id = category.id).all()
     item = session.query(CatalogItem).filter_by(title = item_name).one()
-    return render_template('itemInfo.html', item = item, category_name = category_name, item_name = item_name)
+    return render_template('itemInfo.html', item = item, category_name = category_name, categoryItems = categoryItems)
 
 #This page will allow signed in user to add a new item
 @app.route('/catalog/new', methods=['GET', 'POST'])
 def newItem():
+    newItemCategory = session.query(Category).all()
     if request.method == 'POST':
         newItem = CatalogItem(title = request.form['title'], description = request.form['description'],
         category_id = request.form['category'])
@@ -47,7 +51,7 @@ def newItem():
         session.commit()
         return redirect(url_for('catalogHome'))
     else:
-        return render_template('newItem.html')
+        return render_template('newItem.html', category = newItemCategory)
 
 #This page lets you edit an item when logged in.
 @app.route('/catalog/<category_name>/items/<item_name>/edit/', methods=['GET', 'POST'])

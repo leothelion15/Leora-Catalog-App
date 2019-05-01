@@ -1,27 +1,39 @@
+<!DOCTYPE html>
+
 <html>
 
+<head>
+  <link rel = stylesheet type = text/css href = "{{url_for('static',
+        filename = 'style.css')}}">
+</head>
+
 <body>
+  <div class = header>
+    <a href = '{{url_for('catalogHome')}}' class = homeButton>
+      Catalog App</a>
 
-  <h1>Catalog App</h1>
-
-  <a href = '{{url_for('newItem')}}'>Add New Item</a>
-
-  <div class = categoryTopic>
-
-  {% for c in catalog %}
-
-  <a href = '{{url_for('categoryItems', category_name = c.name)}}'><h3>{{c.name}}</h3></a>
-
-  {% endfor %}
-
+    <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
   </div>
 
-<div class = latestItems>
-  <h2>Latest Items</h2>
-  {% for i in items %}
+  </br>
+
+  <div class = mainContent>
+
+  <div class = categoryList>
+    <h2>Catagories</h2>
+    {% for c in catalog %}
+    <a href = '{{url_for('categoryItems', category_name = c.name)}}'><h3>{{c.name}}</h3></a>
+    {% endfor %}
+  </div>
+
+  <div class = latestItems>
+    <h2>Latest Items</h2>
+    {% for i in items %}
     <p>{{i.title}}</p>
-  {% endfor %}
+    {% endfor %}
   </div>
+
+  </div
 
 </body>
 </html>

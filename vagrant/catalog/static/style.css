@@ -1,0 +1,98 @@
+body{
+  color: #ef0404;
+}
+
+h2{
+  color: orange;
+  text-decoration: underline;
+}
+
+h3{
+  font-size: x-large;
+}
+
+a{
+  text-decoration: none;
+  color: #ef0404;
+}
+
+p{
+  font-size: large;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: orange;
+  padding: 10px
+}
+
+.homeButton{
+  text-decoration: none;
+  font-size: 50px;
+  color: #ef0404;
+}
+
+.addNewButton{
+  padding: 2px;
+  background-color: #ef0404;
+  color: orange;
+}
+
+.mainContent{
+  margin: 25px;
+  display: flex;
+  flex: 1 auto;
+  align-content: space-around;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.categoryList{
+  order: 1;
+  flex-grow: 1;
+  text-align: right;
+  padding: 10px;
+}
+
+.latestItems{
+  align-content: space-around;
+  flex-grow: 3;
+  order: 2;
+  padding: 10px;
+  border-left: solid;
+  border-left-color: orange;
+}
+
+.itemsList{
+  align-content: space-around;
+  flex-grow: 3;
+  order: 2;
+  padding: 10px;
+  border-left: solid;
+  border-left-color: orange;
+  text-align: left;
+}
+
+.itemsListDetail{
+  order: 1;
+  flex-grow: 1;
+  text-align: right;
+  padding: 10px;
+}
+
+.itemDetails{
+  align-content: space-around;
+  flex-grow: 3;
+  order: 2;
+  padding: 10px;
+  border-left: solid;
+  border-left-color: orange;
+  text-align: left;
+}
+
+.button{
+  padding: 2px;
+  text-decoration: underline;
+}

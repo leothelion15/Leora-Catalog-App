@@ -1,7 +1,20 @@
 <html>
 
+<header>
+  <link rel = stylesheet type = text/css href = "{{url_for('static',
+        filename = 'style.css')}}">
+</header>
+
 <body>
-  <h1> Are you sure you want to delete {{item.title}}?</h1>
+
+  <div class = header>
+    <a href = '{{url_for('catalogHome')}}' class = homeButton>
+      Catalog App</a>
+
+    <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
+  </div>
+
+  <h2> Are you sure you want to delete {{item.title}}?</h2>
 
   <form action = "{{url_for('deleteItem', category_name = category_name,
                     item_name = item.title)}}" method = 'POST'>
@@ -10,7 +23,7 @@
 
   </form>
 
-  <a href = "{{url_for('categoryItems', category_name = category_name)}}">
+  <a href = "{{url_for('itemInfo', category_name = category_name, item_name = item.title)}}">
     Cancel</a>
 
 </body>
