@@ -1,5 +1,7 @@
 #!/usr/bin/python
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import session as login_session
+import random, string
 
 app = Flask(__name__)
 
@@ -15,6 +17,15 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind = engine)
 session = DBSession()
+
+# Create a state token to prevent request forgery.
+# Store it in the session for later validation.
+@app.route('/login')
+def showLogin():
+    state = ''.join(random.choice(string.ascii_uppercase +
+                string.digits) for x in xrange(32))
+    login_session['state'] = state
+    return render_template('login.html', STATE=state)
 
 # Show all current categories and latest Items
 @app.route('/')
@@ -56,6 +67,7 @@ def newItem():
 #This page lets you edit an item when logged in.
 @app.route('/catalog/<category_name>/items/<item_name>/edit/', methods=['GET', 'POST'])
 def editItem(category_name, item_name):
+    catalog = session.query(Category).all()
     editedItem = session.query(CatalogItem).filter_by(title = item_name).one()
     if request.method == 'POST':
         if request.form['title']:
@@ -68,7 +80,8 @@ def editItem(category_name, item_name):
         session.commit()
         return redirect(url_for('categoryItems', category_name = category_name))
     else:
-        return render_template('editItem.html', category_name = category_name, item = editedItem)
+        return render_template('editItem.html', category_name = category_name,
+            item = editedItem, catalog = catalog)
 
 #This page lets you delete an item when logged in.
 @app.route('/catalog/<category_name>/items/<item_name>/delete/', methods=['GET', 'POST'])

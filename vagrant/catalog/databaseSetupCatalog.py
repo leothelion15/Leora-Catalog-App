@@ -45,6 +45,8 @@ class CatalogItem(Base):
             'id'        : self.id
         }
 
+
+
 #######insert at end of file #######
 
 engine = create_engine('sqlite:///catalogApp.db')
