@@ -2,20 +2,19 @@
 
 <html>
 
-<head>
+<header>
   <link rel = stylesheet type = text/css href = "{{url_for('static',
         filename = 'style.css')}}">
-</head>
+</header>
 
 <body>
+
   <div class = header>
     <a href = '{{url_for('catalogHome')}}' class = homeButton>
       Catalog App</a>
 
-    <a href = '{{url_for('showLogin')}}'>Sign In Here</a>
+    <a href = '{{url_for('gdisconnect')}}'>Log Out</a>
   </div>
-
-  </br>
 
   <div class = 'flash'>
             {% with messages = get_flashed_messages() %}
@@ -29,23 +28,26 @@
       {% endwith %}
   </div>
 
+  <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
+
   <div class = mainContent>
 
-  <div class = categoryList>
-    <h2>Catagories</h2>
-    {% for c in catalog %}
-    <a href = '{{url_for('categoryItems', category_name = c.name)}}'><h3>{{c.name}}</h3></a>
-    {% endfor %}
-  </div>
+    <div class = categoryList>
+      <h2>Catagories</h2>
+      {% for c in catalog %}
+      <a href = '{{url_for('categoryItems', category_name = c.name)}}'><h3>{{c.name}}</h3></a>
+      {% endfor %}
+    </div>
 
-  <div class = latestItems>
-    <h2>Latest Items</h2>
-    {% for i in items %}
-    <p>{{i.title}}</p>
-    {% endfor %}
-  </div>
+    <div class = itemsList>
+      <h2>{{category.name}} Items</h2>
+      {% for i in items %}
+        <a href = '{{url_for('itemInfo', category_name = category.name, item_name = i.title)}}'><h3>{{i.title}}<h3></a>
+      {% endfor %}
+    </div>
 
-  </div
+  </div>
 
 </body>
+
 </html>

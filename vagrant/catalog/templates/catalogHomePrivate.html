@@ -12,23 +12,25 @@
     <a href = '{{url_for('catalogHome')}}' class = homeButton>
       Catalog App</a>
 
-    <a href = '{{url_for('showLogin')}}'>Sign In Here</a>
+    <a href = '{{url_for('gdisconnect')}}'>Log Out</a>
   </div>
 
   </br>
 
   <div class = 'flash'>
-            {% with messages = get_flashed_messages() %}
+  		      {% with messages = get_flashed_messages() %}
         {% if messages %}
           <ul>
           {% for message in messages %}
-            <strong> {{ message }} </strong>
+              <strong> {{ message }} </strong>
           {% endfor %}
           </ul>
           {% endif %}
       {% endwith %}
   </div>
 
+  <a href = '{{url_for('newCategory')}}' class = addNewButton>Add New Category</a>
+  <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
   <div class = mainContent>
 
   <div class = categoryList>

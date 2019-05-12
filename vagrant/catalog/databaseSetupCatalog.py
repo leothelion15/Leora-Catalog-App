@@ -7,6 +7,26 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+# Table of all users with account in my catalog
+class UserLogOn(Base):
+    __tablename__ = 'user_logon'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
+    email = Column(String(500), nullable=False)
+    picture = Column(String(500))
+
+    @property
+    def serialize(self):
+       """Return object data in easily serializeable format"""
+       return {
+           'name'         : self.name,
+           'id'           : self.id,
+           'email'      : self.email,
+           'picture'    : self.picture
+       }
+
+# Table of all categories n my catalog
 class Category(Base):
     #Table
     __tablename__ = 'category'
@@ -15,6 +35,8 @@ class Category(Base):
     name = Column(String(80), nullable = False)
     id = Column(Integer, primary_key = True)
     items = relationship("CatalogItem")
+    user_id = Column(Integer, ForeignKey('user_logon.id'))
+    userlogon = relationship(UserLogOn)
 
     # Allow for JSON intepretation of the data
     @property
@@ -22,9 +44,11 @@ class Category(Base):
         return{
             'name'      : self.name,
             'id'        : self.id,
+            'user_id'   :self.user_id,
             'items'     : [item.serialize for item in self.items]
         }
 
+# Table of all items in the catalog
 class CatalogItem(Base):
     #Table:
     __tablename__ = 'catalog_item'
@@ -35,6 +59,8 @@ class CatalogItem(Base):
     description = Column(String(250))
     category_id = Column(Integer, ForeignKey('category.id'))
     category = relationship(Category, back_populates = 'items')
+    user_id = Column(Integer, ForeignKey('user_logon.id'))
+    userlogon = relationship(UserLogOn)
 
     @property
     def serialize(self):
@@ -42,7 +68,8 @@ class CatalogItem(Base):
         return {
             'title'      : self.title,
             'description'       : self.description,
-            'id'        : self.id
+            'id'        : self.id,
+            'user_id'   :self.user_id
         }
 
 

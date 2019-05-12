@@ -11,8 +11,10 @@
     <a href = '{{url_for('catalogHome')}}' class = homeButton>
       Catalog App</a>
 
-    <a href = '{{url_for('showLogin')}}'>Sign In Here</a>
+    <a href = '{{url_for('gdisconnect')}}'>Log Out</a>
   </div>
+
+    <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
 
   <div class = mainContent>
     <div class = itemsListDetail>
@@ -25,7 +27,11 @@
     <div class = itemDetails>
       <h2>{{item.title}}</h2>
       <p>{{item.description}}</p>
-      </div>
+      {% if userID == item.user_id %}
+        <a href = '{{url_for('editItem', category_name = category_name, item_name = item.title)}}'>Edit</a>
+        <a href = '{{url_for('deleteItem', category_name = category_name, item_name = item.title)}}'>Delete</a></br>
+      {% endif %}
+    </div>
   </div>
 
 </body>

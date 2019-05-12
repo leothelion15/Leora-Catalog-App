@@ -13,7 +13,19 @@
     <a href = '{{url_for('catalogHome')}}' class = homeButton>
       Catalog App</a>
 
-    <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
+    <a href = '{{url_for('showLogin')}}'>Sign In Here</a>
+  </div>
+
+  <div class = 'flash'>
+            {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul>
+          {% for message in messages %}
+            <strong> {{ message }} </strong>
+          {% endfor %}
+          </ul>
+          {% endif %}
+      {% endwith %}
   </div>
 
   <div class = mainContent>
@@ -29,12 +41,6 @@
       <h2>{{category.name}} Items</h2>
       {% for i in items %}
         <a href = '{{url_for('itemInfo', category_name = category.name, item_name = i.title)}}'><h3>{{i.title}}<h3></a>
-          <!--
-        <div class = editDelete>
-          <a href = '{{url_for('editItem', category_name = category.name, item_name = i.title)}}'>Edit</a>
-          <a href = '{{url_for('deleteItem', category_name = category.name, item_name = i.title)}}'>Delete</a></br>
-        </div>
-      -->
       {% endfor %}
     </div>
 
