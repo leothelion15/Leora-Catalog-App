@@ -98,7 +98,7 @@ session.add(catalogItem1)
 session.commit()
 
 
-catalogItem2 = CatalogItem(title = "Hockey Puck", description = "Small black puck for ice hockey.", category = category4, user_id = 1)
+catalogItem2 = CatalogItem(title = "Hockey Puck", description = "Small black disc for ice hockey.", category = category4, user_id = 1)
 
 session.add(catalogItem2)
 session.commit()
@@ -125,7 +125,7 @@ category5 = Category(name = "Football", user_id = 1)
 session.add(category5)
 session.commit()
 
-catalogItem1 = CatalogItem(title = "Football", description = "Brown leather ball in the shape of a foot.", category = category5, user_id = 1)
+catalogItem1 = CatalogItem(title = "Football", description = "Brown leather long ball.", category = category5, user_id = 1)
 
 session.add(catalogItem1)
 session.commit()
@@ -135,7 +135,7 @@ catalogItem2 = CatalogItem(title = "Football Cleats", description = "Black and w
 session.add(catalogItem2)
 session.commit()
 
-catalogItem4 = CatalogItem(title = "Football Helmet", description = "Protective gear for the head. Comes in children and adults sizing.", category = category4, user_id = 1)
+catalogItem4 = CatalogItem(title = "Football Helmet", description = "Protective gear for the head. Comes in children and adults sizing.", category = category5, user_id = 1)
 
 session.add(catalogItem4)
 session.commit()

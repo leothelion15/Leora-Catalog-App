@@ -3,7 +3,7 @@ A user may log into the website, using Google oauth2, to add new categories or i
 
 Steps to run the catalog app:
 1) Run "vagrant up". Once the virtual machine is running, use "vagrant ssh" to begin using the virtual machine
-2) Once in the machine, change directories to /vagrant/catalog
+2) Once in the machine, change directories to /vagrant/catalog and ensure the correct shebang on all python files
 3) Run "python databaseSetupCatalog.py" to create the database
 4) Run "python lotsofcategories.py" to fill the database with items
 5) Run "python catalogApp.py" to start the application
