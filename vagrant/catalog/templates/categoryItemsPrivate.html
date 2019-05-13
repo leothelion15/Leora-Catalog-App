@@ -1,3 +1,6 @@
+<!-- Webpage for logged in user listing all items in a categrory
+and allows for adding items -->
+
 <!DOCTYPE html>
 
 <html>
@@ -13,7 +16,11 @@
     <a href = '{{url_for('catalogHome')}}' class = homeButton>
       Catalog App</a>
 
-    <a href = '{{url_for('gdisconnect')}}'>Log Out</a>
+      <div class = buttons>
+      <a href = '{{url_for('newCategory')}}' class = addNewButton>Add New Category</a>
+      <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
+      <a href = '{{url_for('gdisconnect')}}' class = signInButton>Log Out</a>
+    </div>
   </div>
 
   <div class = 'flash'>
@@ -27,8 +34,6 @@
           {% endif %}
       {% endwith %}
   </div>
-
-  <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
 
   <div class = mainContent>
 

@@ -25,7 +25,7 @@ p{
   justify-content: space-between;
   align-items: center;
   background-color: orange;
-  padding: 10px
+  padding: 10px;
 }
 
 .homeButton{
@@ -34,26 +34,44 @@ p{
   color: #ef0404;
 }
 
+.signInButton{
+  padding: 2px;
+  background-color: #ef0404;
+  color: orange;
+  margin: 5px;
+}
+
 .addNewButton{
   padding: 2px;
   background-color: #ef0404;
   color: orange;
+  margin: 5px;
+}
+
+.buttons{
+  display: flex;
+}
+
+.flash{
+  text-align: center;
 }
 
 .mainContent{
-  margin: 25px;
   display: flex;
-  flex: 1 auto;
+  flex: none;
   align-content: space-around;
   justify-content: center;
   align-items: stretch;
+  background-color: #4e1111;
 }
 
 .categoryList{
   order: 1;
   flex-grow: 1;
-  text-align: right;
-  padding: 10px;
+  flex: 0 0 250px;
+  text-align: center;
+  background-color: #9b6262;
+  margin: 50px;
 }
 
 .latestItems{
@@ -61,8 +79,7 @@ p{
   flex-grow: 3;
   order: 2;
   padding: 10px;
-  border-left: solid;
-  border-left-color: orange;
+  margin-top: 50px;
 }
 
 .itemsList{
@@ -70,9 +87,7 @@ p{
   flex-grow: 3;
   order: 2;
   padding: 10px;
-  border-left: solid;
-  border-left-color: orange;
-  text-align: left;
+  margin-top: 50px;
 }
 
 .itemsListDetail{
@@ -80,16 +95,18 @@ p{
   flex-grow: 1;
   text-align: right;
   padding: 10px;
+  text-align: center;
+  background-color: #9b6262;
+  flex: 0 0 250px;
+  margin: 50px;
 }
 
 .itemDetails{
   align-content: space-around;
   flex-grow: 3;
   order: 2;
+  margin-top: 50px;
   padding: 10px;
-  border-left: solid;
-  border-left-color: orange;
-  text-align: left;
 }
 
 .button{

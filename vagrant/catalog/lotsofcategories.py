@@ -10,7 +10,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Add original user to the database
-user1 = UserLogOn(name = 'Leora Skaist', email = 'leorabirnbaum@gmail.com', picture = "")
+user1 = UserLogOn(name = 'Leora Skaist', email = 'leoraskaist@gmail.com', picture = "https://lh5.googleusercontent.com/-1Xb7dUiT0y0/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rdEUHl9O-4oq9BlNSTMCdt-wlLLkg/mo/photo.jpg")
 
 session.add(user1)
 session.commit()

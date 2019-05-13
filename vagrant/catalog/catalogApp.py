@@ -280,6 +280,7 @@ def usersJSON():
     return jsonify(users = [u.serialize for u in users])
 
 # Helper functions
+# Compare user signing in to database
 def getUserID(email):
     try:
         userinfo = session.query(UserLogOn).filter_by(email = email).one()
@@ -287,10 +288,12 @@ def getUserID(email):
     except:
         return None
 
+# Pull user information from the database
 def getUserInfo(user_id):
     userinfo = session.query(UserLogOn).filter_by(id = user_id).one()
     return userinfo
 
+# Add a new user to the database
 def createUser(login_session):
     newUser = UserLogOn(name=login_session['username'],
         email = login_session['email'], picture = login_session['picture'])

@@ -1,3 +1,5 @@
+<!-- The main landing page of the app, once signed in -->
+
 <!DOCTYPE html>
 
 <html>
@@ -12,7 +14,11 @@
     <a href = '{{url_for('catalogHome')}}' class = homeButton>
       Catalog App</a>
 
-    <a href = '{{url_for('gdisconnect')}}'>Log Out</a>
+    <div class = buttons>
+    <a href = '{{url_for('newCategory')}}' class = addNewButton>Add New Category</a>
+    <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
+    <a href = '{{url_for('gdisconnect')}}' class = signInButton>Log Out</a>
+  </div>
   </div>
 
   </br>
@@ -29,8 +35,6 @@
       {% endwith %}
   </div>
 
-  <a href = '{{url_for('newCategory')}}' class = addNewButton>Add New Category</a>
-  <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
   <div class = mainContent>
 
   <div class = categoryList>

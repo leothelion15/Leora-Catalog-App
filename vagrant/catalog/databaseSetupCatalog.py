@@ -26,7 +26,7 @@ class UserLogOn(Base):
            'picture'    : self.picture
        }
 
-# Table of all categories n my catalog
+# Table of all categories in my catalog
 class Category(Base):
     #Table
     __tablename__ = 'category'

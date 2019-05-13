@@ -1,3 +1,7 @@
+<!-- Private view of information about an item.
+Any logged in user can add new items, but only the person who
+created the item can edit or delete it. -->
+
 <html>
 
 <head>
@@ -11,12 +15,15 @@
     <a href = '{{url_for('catalogHome')}}' class = homeButton>
       Catalog App</a>
 
-    <a href = '{{url_for('gdisconnect')}}'>Log Out</a>
+      <div class = buttons>
+      <a href = '{{url_for('newCategory')}}' class = addNewButton>Add New Category</a>
+      <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
+      <a href = '{{url_for('gdisconnect')}}' class = signInButton>Log Out</a>
+    </div>
   </div>
 
-    <a href = '{{url_for('newItem')}}' class = addNewButton>Add New Item</a>
+<div class = mainContent>
 
-  <div class = mainContent>
     <div class = itemsListDetail>
       <h2>{{category_name}} Items</h2>
       {% for i in categoryItems %}
